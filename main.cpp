@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <vector>
-#include <windows.h>
+#include <stdlib.h>
 struct edge
 {
 	char piece;
@@ -13,20 +13,34 @@ void init(void);
 int main()
 {
 	system("");
-	printf("\033[36mTetr.io\033[0m\n");
+	printf("\033[91mTetr.io\033[0m\n");
 	init();
 	char buffer[128] = "";
-	// while (true)
-	// 	printf("%d\n", getch());
-	// return 0;
 	while (true)
 	{
 		int board, res = -2, len = 0;
 		char hode[3], now[2], next[6];
-		puts("\033[36mInput with \033[38;2;128;128;128m[board id] [hold piece] [current piece] [next 5 pieces]\033[0m");
+		puts("\033[36mInput with \033[90m[board id] [hold piece] [current piece] [next 5 pieces]\033[0m");
 		while (buffer[len])
+		{
+			if (buffer[len] == 'J')
+				printf("\033[94m");
+			else if (buffer[len] == 'I')
+				printf("\033[96m");
+			else if (buffer[len] == 'T')
+				printf("\033[95m");
+			else if (buffer[len] == 'Z')
+				printf("\033[91m");
+			else if (buffer[len] == 'L')
+				printf("\033[31m");
+			else if (buffer[len] == 'O')
+				printf("\033[33m");
+			else if (buffer[len] == 'S')
+				printf("\033[92m");
+			putchar(buffer[len]);
+			printf("\033[0m");
 			++len;
-		printf("%s", buffer);
+		}
 		while (true)
 		{
 			int c = getch();
@@ -51,13 +65,29 @@ int main()
 				buffer[3] = 't';
 				buffer[4] = 0;
 				len = 5;
+				putchar('\n');
 				break;
 			}
 			else
 			{
 				buffer[len++] = c;
 				buffer[len] = 0;
+				if (c == 'J')
+					printf("\033[94m");
+				else if (c == 'I')
+					printf("\033[96m");
+				else if (c == 'T')
+					printf("\033[95m");
+				else if (c == 'Z')
+					printf("\033[91m");
+				else if (c == 'L')
+					printf("\033[31m");
+				else if (c == 'O')
+					printf("\033[33m");
+				else if (c == 'S')
+					printf("\033[92m");
 				putchar(c);
+				printf("\033[0m");
 			}
 		}
 		if (buffer[0] == 'e' && buffer[1] == 'x' && buffer[2] == 'i' && buffer[3] == 't' && buffer[4] == 0)
@@ -68,12 +98,12 @@ int main()
 		dfs(board, hode[0], now[0], next[0], next[1], next[2], next[3], next[4], res);
 		if (res == -2)
 		{
-			puts("\033[38;2;0;128;0mNo solution.\033[0m");
+			puts("\033[91mNo solution.\033[0m");
 			buffer[0] = 0;
 		}
 		else if (res == -1)
 		{
-			puts("\033[38;2;0;128;0mHolding piece.\033[0m");
+			puts("\033[90mHolding piece.\033[0m");
 			sprintf(buffer, "%d -%c %c %s", board, now[0], hode[0], next);
 		}
 		else
@@ -82,6 +112,8 @@ int main()
 			sprintf(buffer, "%d %c %c %s", res, abs(hode[0]), next[0], next + 1);
 		}
 	}
+	printf("\033[32mThanks for your using.\033[0m");
+	return 0;
 }
 inline char abs(char x) { return x < 0 ? -x : x; }
 bool dfs(int board, char hold, char now, char next1, char next2, char next3, char next4, char next5, int& res)
