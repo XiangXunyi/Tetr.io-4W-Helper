@@ -3,6 +3,10 @@ When you are playing 4W, it can help you get lots of combos and send lots of att
 
 Thanks [zengmaoyuan](https://github.com/zengmaoyuan) and [tanjiaqi](https://github.com/tanjiaqi) for helping calculating.
 
+## How to use it
+
+### Boards
+
 Here are the the ids of the boards.To be understood, we use 'X' to mean a piece and 'O' to mean a blank.
 
 |$\text{id}$|$\text{board}$|
@@ -35,3 +39,23 @@ Here are the the ids of the boards.To be understood, we use 'X' to mean a piece 
 |$25$|`OXXO` <br/> `XOOO`|
 |$26$|`XOOO` <br/> `OXXO`|
 |$27$|`OOOX` <br/> `OXXO`|
+
+### Input
+
+When you start the program, it will let you "input with [board id] [hold piece] [current piece] [next 5 pieces]".
+
+For example, "3 L I SZOIT" is a good input.
+
+If the holden piece is unable, you can put a '-' before the [hold piece] to mean that.
+
+For example, "3 -L I SZOIT" is a good input.
+
+When you want to end the program, you can input "exit" or press "Ctrl + C" to do that.
+
+### Output
+
+If the program puts "No solution.", the board is unable to make more than 4 combos. You should make a new board.
+
+If the program puts "Holding piece.", you should hold the piece.
+
+If the program puts "Move to x.", you should replace the piece to turn the board into the x-th board.
