@@ -62,4 +62,4 @@ If the program puts "Move to x.", you should replace the piece to turn the board
 
 ## updates
 
-$2025-05-05 \space 15:35$ UTC\+ $8$ : Known issues fixed. Added more colors.
+$2025-05-05 \space 15:35 \space (\text{UTC}+8)$ : Known issues fixed. Added more colors.
