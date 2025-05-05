@@ -1,6 +1,8 @@
 # Tetr.io-4W-Helper
 When you are playing 4W, it can help you get lots of combos and send lots of attacks.
 
+Thanks [zengmaoyuan](https://github.com/zengmaoyuan) and [tanjiaqi](https://github.com/tanjiaqi) for helping calculating.
+
 Here are the the ids of the boards.To be understood, we use 'X' to mean a piece and 'O' to mean a blank.
 
 |$\text{id}$|$\text{board}$|
