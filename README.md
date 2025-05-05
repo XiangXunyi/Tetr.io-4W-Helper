@@ -42,15 +42,15 @@ Here are the the ids of the boards.To be understood, we use 'X' to mean a piece 
 
 ### Input
 
-When you start the program, it will let you "input with [board id] [hold piece] [current piece] [next 5 pieces]".
+When you start the program, it will let you `input with [board id] [hold piece] [current piece] [next 5 pieces]`.
 
-For example, "3 L I SZOIT" is a good input.
+For example, `3 L I SZOIT` is a good input.
 
-If the holden piece is unable, you can put a '-' before the [hold piece] to mean that.
+If the holden piece is unable, you can put a `-` before the `[hold piece]` to mean that.
 
-For example, "3 -L I SZOIT" is a good input.
+For example, `3 -L I SZOIT` is a good input.
 
-When you want to end the program, you can input "exit" or press "Ctrl + C" to do that.
+When you want to end the program, you can input `exit` or press `Ctrl + C` to do that.
 
 ### Output
 
