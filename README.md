@@ -1,5 +1,5 @@
 # Tetr.io-4W-Helper
-When you are playing 4W, it can help you get lots of combos.
+When you are playing 4W, it can help you get lots of combos and send lots of attacks.
 
 Here are the the ids of the boards.To be understood, we use 'X' to mean a piece and 'O' to mean a blank.
 
