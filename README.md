@@ -59,3 +59,7 @@ If the program puts "No solution.", the board is unable to make more than 4 comb
 If the program puts "Holding piece.", you should hold the piece.
 
 If the program puts "Move to x.", you should replace the piece to turn the board into the x-th board.
+
+## updates
+
+$2025-05-05 15:35$ UTC+$8$: Known issues fixed. Added more colors.
