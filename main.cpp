@@ -98,17 +98,17 @@ int main()
 		dfs(board, hode[0], now[0], next[0], next[1], next[2], next[3], next[4], res);
 		if (res == -2)
 		{
-			puts("\033[91mNo solution.\033[0m");
+			puts("\033[91mNo solution.\n\033[0m");
 			buffer[0] = 0;
 		}
 		else if (res == -1)
 		{
-			puts("\033[90mHolding piece.\033[0m");
+			puts("\033[90mHolding piece.\n\033[0m");
 			sprintf(buffer, "%d -%c %c %s", board, now[0], hode[0], next);
 		}
 		else
 		{
-			printf("\033[38;2;0;128;0mMove to %d.\n\033[0m", res);
+			printf("\033[38;2;0;128;0mMove to %d.\n\n\033[0m", res);
 			sprintf(buffer, "%d %c %c %s", res, abs(hode[0]), next[0], next + 1);
 		}
 	}
