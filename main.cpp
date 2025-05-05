@@ -117,7 +117,7 @@ void init(void)
 	g[1].push_back({ 'J', 7 });
 	g[1].push_back({ 'I', 1 });
 
-	g[2].push_back({ 'Z', 9 });
+	g[2].push_back({ 'S', 9 });
 	g[2].push_back({ 'T', 0 });
 	g[2].push_back({ 'T', 8 });
 	g[2].push_back({ 'L', 3 });
