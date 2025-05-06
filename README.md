@@ -42,7 +42,7 @@ Here are the the ids of the boards.To be understood, we use 'X' to mean a piece 
 
 ### Input
 
-When you start the program, it will let you `input with [board id] [hold piece] [current piece] [next 5 pieces]`.
+When you start the program, it will let you `input with [board id] [hold piece] [current piece] [next pieces]`.
 
 For example, `3 L I SZOIT` is a good input.
 
@@ -63,3 +63,5 @@ If the program puts "Move to x.", you should replace the piece to turn the board
 ## updates
 
 $2025-05-05 \space 15:35 \space (\text{UTC}+8)$ : Fixed known issues. Added more colors.
+
+$2025-05-06 \space 21:45 \space (\text{UTC}+8)$ : Remove restrictions on the number of next pieces.
