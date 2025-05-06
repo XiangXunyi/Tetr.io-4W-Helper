@@ -8,7 +8,7 @@ struct edge
 	int next;
 };
 std::vector<edge> g[28];
-bool dfs(int, char, char, char, char, char, char, char, int&);
+bool dfs(int, char, char, char*, int&);
 void init(void);
 int main()
 {
@@ -19,8 +19,8 @@ int main()
 	while (true)
 	{
 		int board, res = -2, len = 0;
-		char hode[3], now[2], next[6];
-		puts("\033[36mInput with \033[90m[board id] [hold piece] [current piece] [next 5 pieces]\033[0m");
+		char hode[3], now[2], next[32];
+		puts("\033[36mInput with \033[90m[board id] [hold piece] [current piece] [next pieces]\033[0m");
 		while (buffer[len])
 		{
 			if (buffer[len] == 'J')
@@ -95,7 +95,7 @@ int main()
 		sscanf(buffer, "%d%s%s%s", &board, hode, now, next);
 		if (hode[0] == '-')
 			hode[0] = -hode[1];
-		dfs(board, hode[0], now[0], next[0], next[1], next[2], next[3], next[4], res);
+		dfs(board, hode[0], now[0], next, res);
 		if (res == -2)
 		{
 			puts("\033[91mNo solution.\n\033[0m");
@@ -116,17 +116,17 @@ int main()
 	return 0;
 }
 inline char abs(char x) { return x < 0 ? -x : x; }
-bool dfs(int board, char hold, char now, char next1, char next2, char next3, char next4, char next5, int& res)
+bool dfs(int board, char hold, char now, char* next, int& res)
 {
 	if (now == 0)
 		return true;
 	for (auto [piece, to] : g[board])
-		if (piece == now && dfs(to, abs(hold), next1, next2, next3, next4, next5, 0, res))
+		if (piece == now && dfs(to, abs(hold), *next, next + 1, res))
 		{
 			res = to;
 			return true;
 		}
-	if (hold > 0 && dfs(board, -now, hold, next1, next2, next3, next4, next5, res))
+	if (hold > 0 && dfs(board, -now, hold, next, res))
 	{
 		res = -1;
 		return true;
