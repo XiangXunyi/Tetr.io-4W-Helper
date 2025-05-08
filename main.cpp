@@ -8,7 +8,8 @@ struct edge
 	int next;
 };
 std::vector<edge> g[28];
-bool dfs(int, char, char, char*, int&);
+const char pieces[7] = { 'J', 'I', 'T', 'Z', 'L', 'O', 'S' };
+bool dfs(int, char, char, char*);
 void init(void);
 int main()
 {
@@ -18,7 +19,7 @@ int main()
 	char buffer[128] = "";
 	while (true)
 	{
-		int board, res = -2, len = 0;
+		int board, len = 0;
 		char hode[3], now[2], next[32];
 		puts("\033[36mInput with \033[90m[board id] [hold piece] [current piece] [next pieces]\033[0m");
 		while (buffer[len])
@@ -95,7 +96,46 @@ int main()
 		sscanf(buffer, "%d%s%s%s", &board, hode, now, next);
 		if (hode[0] == '-')
 			hode[0] = -hode[1];
-		dfs(board, hode[0], now[0], next, res);
+		int res = -2, point = 0, lengthOfNext = 0;
+		while (next[lengthOfNext])
+			++lengthOfNext;
+
+		for (auto [piece, to] : g[board])
+			if (piece == now[0])
+			{
+				int nowPoint = 0;
+				for (char lastPiece : pieces)
+				{
+					next[lengthOfNext] = lastPiece;
+					next[lengthOfNext + 1] = 0;
+					if (dfs(to, abs(hode[0]), next[0], next + 1))
+						++nowPoint;
+					next[lengthOfNext] = 0;
+				}
+				if (nowPoint > point)
+				{
+					point = nowPoint;
+					res = to;
+				}
+			}
+
+		{
+			int nowPoint = 0;
+			for (char lastPiece : pieces)
+			{
+				next[lengthOfNext] = lastPiece;
+				next[lengthOfNext + 1] = 0;
+				if (dfs(board, -now[0], abs(hode[0]), next))
+					++nowPoint;
+				next[lengthOfNext] = 0;
+			}
+			if (nowPoint > point)
+			{
+				point = nowPoint;
+				res = -1;
+			}
+		}
+
 		if (res == -2)
 		{
 			puts("\033[91mNo solution.\n\033[0m");
@@ -116,21 +156,15 @@ int main()
 	return 0;
 }
 inline char abs(char x) { return x < 0 ? -x : x; }
-bool dfs(int board, char hold, char now, char* next, int& res)
+bool dfs(int board, char hold, char now, char* next)
 {
 	if (now == 0)
 		return true;
 	for (auto [piece, to] : g[board])
-		if (piece == now && dfs(to, abs(hold), *next, next + 1, res))
-		{
-			res = to;
+		if (piece == now && dfs(to, abs(hold), *next, next + 1))
 			return true;
-		}
-	if (hold > 0 && dfs(board, -now, hold, next, res))
-	{
-		res = -1;
+	if (hold > 0 && dfs(board, -now, hold, next))
 		return true;
-	}
 	return false;
 }
 void init(void)
