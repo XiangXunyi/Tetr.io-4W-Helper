@@ -64,4 +64,6 @@ If the program puts "Move to x.", you should replace the piece to turn the board
 
 $2025-05-05 \space 15:35 \space (\text{UTC}+8)$ : Fixed known issues. Added more colors.
 
-$2025-05-06 \space 21:45 \space (\text{UTC}+8)$ : Remove restrictions on the number of next pieces.
+$2025-05-06 \space 21:45 \space (\text{UTC}+8)$ : Removed restrictions on the number of next pieces.
+
+$2025-05-08 \space 17:12 \space (\text{UTC}+8)$ : Optimized the selection method.
