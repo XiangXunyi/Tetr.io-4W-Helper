@@ -69,7 +69,7 @@ int main()
 				putchar('\n');
 				break;
 			}
-			else
+			else if ('a' <= c && c <= 'z' || 'A' <= c && c <= 'Z' || '0' <= c && c <= '9' || c == ' ' || c == '-')
 			{
 				buffer[len++] = c;
 				buffer[len] = 0;
@@ -104,14 +104,18 @@ int main()
 			if (piece == now[0])
 			{
 				int nowPoint = 0;
-				for (char lastPiece : pieces)
-				{
-					next[lengthOfNext] = lastPiece;
-					next[lengthOfNext + 1] = 0;
-					if (dfs(to, abs(hode[0]), next[0], next + 1))
-						++nowPoint;
-					next[lengthOfNext] = 0;
-				}
+				for (char theThirdFromTheLastPiece : pieces)
+					for (char theSecondFromTheLastPiece : pieces)
+						for (char lastPiece : pieces)
+						{
+							next[lengthOfNext] = theThirdFromTheLastPiece;
+							next[lengthOfNext + 1] = theSecondFromTheLastPiece;
+							next[lengthOfNext + 2] = lastPiece;
+							next[lengthOfNext + 3] = 0;
+							if (dfs(to, abs(hode[0]), next[0], next + 1))
+								++nowPoint;
+							next[lengthOfNext] = 0;
+						}
 				if (nowPoint > point)
 				{
 					point = nowPoint;
@@ -121,14 +125,18 @@ int main()
 
 		{
 			int nowPoint = 0;
-			for (char lastPiece : pieces)
-			{
-				next[lengthOfNext] = lastPiece;
-				next[lengthOfNext + 1] = 0;
-				if (dfs(board, -now[0], abs(hode[0]), next))
-					++nowPoint;
-				next[lengthOfNext] = 0;
-			}
+			for (char theThirdFromTheLastPiece : pieces)
+				for (char theSecondFromTheLastPiece : pieces)
+					for (char lastPiece : pieces)
+					{
+						next[lengthOfNext] = theThirdFromTheLastPiece;
+						next[lengthOfNext + 1] = theSecondFromTheLastPiece;
+						next[lengthOfNext + 2] = lastPiece;
+						next[lengthOfNext + 3] = 0;
+						if (dfs(board, -now[0], abs(hode[0]), next))
+							++nowPoint;
+						next[lengthOfNext] = 0;
+					}
 			if (nowPoint > point)
 			{
 				point = nowPoint;
@@ -144,7 +152,7 @@ int main()
 		else if (res == -1)
 		{
 			puts("\033[90mHolding piece.\n\033[0m");
-			sprintf(buffer, "%d -%c %c %s", board, now[0], hode[0], next);
+			sprintf(buffer, "%d -%c %c %s", board, now[0], abs(hode[0]), next);
 		}
 		else
 		{
