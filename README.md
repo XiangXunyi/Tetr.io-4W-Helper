@@ -67,3 +67,5 @@ $2025-05-05 \space 15:35 \space (\text{UTC}+8)$ : Fixed known issues. Added more
 $2025-05-06 \space 21:45 \space (\text{UTC}+8)$ : Removed restrictions on the number of next pieces.
 
 $2025-05-08 \space 17:12 \space (\text{UTC}+8)$ : Optimized the selection method.
+
+$2025-05-10 \space 07:57 \space (\text{UTC}+8)$ : Fixed known issues. Optimized the selection method.
